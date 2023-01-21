@@ -1,6 +1,7 @@
 // imports
 import { usePokemon } from '../../hooks/usePokemon.js';
 import Select from '../Controls/Select/Select.js';
+import PokeCard from '../Pokemon/PokeCard.js';
 
 export default function Main() {
   // initialize a variable to store Pokemon data
@@ -11,16 +12,11 @@ export default function Main() {
       {/* controls: select and query */}
       <Select types={types} handleSelectTypeChange={handleSelectChange} />
 
-      {/* display of pokemon cards */}
+      {/* display pokemon cards */}
       <section>
-        {/* use .map to return a list of pokemon names and type */}
+        {/* use .map to return each pokemon card */}
         {pokemon.map((poke) => (
-          <>
-            <h2 key={poke.id}>{poke.pokemon}</h2>
-            <p>
-              Type: {poke.type_1}, {poke.type_2}
-            </p>
-          </>
+          <PokeCard key={poke._id} poke={poke} />
         ))}
       </section>
     </main>
