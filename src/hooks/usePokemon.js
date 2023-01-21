@@ -11,14 +11,17 @@ import {
 export function usePokemon() {
   const [pokemon, setPokemon] = useState([]);
   const [types, setTypes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // get supabase call for fetching initial pokemon
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       // load pokemon
       const data = await fetchInitialPokemon();
       // set pokemon in state
       setPokemon(data);
+      setLoading(false);
     };
     fetchData();
   }, []);
@@ -34,9 +37,11 @@ export function usePokemon() {
 
   // handle change of type in select dropdown
   const handleSelectChange = async (type) => {
+    setLoading(true);
     const data = await fetchPokemonByType(type);
     setPokemon(data);
+    setLoading(false);
   };
 
-  return { pokemon, types, handleSelectChange };
+  return { pokemon, types, handleSelectChange, loading };
 }
