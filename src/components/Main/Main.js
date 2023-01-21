@@ -1,13 +1,15 @@
 // imports
 import { usePokemon } from '../../hooks/usePokemon.js';
+import Select from '../Controls/Select/Select.js';
 
 export default function Main() {
   // initialize a variable to store Pokemon
-  const { pokemon } = usePokemon();
+  const { pokemon, types } = usePokemon();
 
   return (
     <main>
       {/* controls: select and query */}
+      <Select types={types} />
 
       {/* display of pokemon cards */}
       <section>
