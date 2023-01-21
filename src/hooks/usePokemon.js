@@ -1,12 +1,14 @@
 // imports
 
 import { useEffect, useState } from 'react';
-import { fetchInitialPokemon } from '../services/getPokemon.js';
+import { fetchInitialPokemon, fetchPokemonTypes } from '../services/getPokemon.js';
 
-// create custom hook to return pokemon names
+// create custom hook to return initial pokemon names, types
 export function usePokemon() {
   const [pokemon, setPokemon] = useState([]);
+  const [types, setTypes] = useState([]);
 
+  // get supabase call for fetching initial pokemon
   useEffect(() => {
     const fetchData = async () => {
       // load pokemon
@@ -16,5 +18,15 @@ export function usePokemon() {
     };
     fetchData();
   }, []);
-  return pokemon;
+
+  // get supabase call for fetching pokemon types
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchPokemonTypes();
+      setTypes(data);
+    };
+    fetchData();
+  }, []);
+
+  return { pokemon, types };
 }

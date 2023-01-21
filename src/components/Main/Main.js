@@ -3,7 +3,7 @@ import { usePokemon } from '../../hooks/usePokemon.js';
 
 export default function Main() {
   // initialize a variable to store Pokemon
-  const pokemon = usePokemon();
+  const { pokemon } = usePokemon();
 
   return (
     <main>
@@ -11,9 +11,14 @@ export default function Main() {
 
       {/* display of pokemon cards */}
       <section>
-        {/* use .map to return a list of pokemon names */}
+        {/* use .map to return a list of pokemon names and type */}
         {pokemon.map((poke) => (
-          <p key={poke.id}>{poke.pokemon}</p>
+          <>
+            <h2 key={poke.id}>{poke.pokemon}</h2>
+            <p>
+              Type: {poke.type_1}, {poke.type_2}
+            </p>
+          </>
         ))}
       </section>
     </main>
