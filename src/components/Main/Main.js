@@ -3,13 +3,13 @@ import { usePokemon } from '../../hooks/usePokemon.js';
 import Select from '../Controls/Select/Select.js';
 
 export default function Main() {
-  // initialize a variable to store Pokemon
-  const { pokemon, types } = usePokemon();
+  // initialize a variable to store Pokemon data
+  const { pokemon, types, handleSelectChange } = usePokemon();
 
   return (
     <main>
       {/* controls: select and query */}
-      <Select types={types} />
+      <Select types={types} handleSelectTypeChange={handleSelectChange} />
 
       {/* display of pokemon cards */}
       <section>

@@ -1,7 +1,11 @@
 // imports
 
 import { useEffect, useState } from 'react';
-import { fetchInitialPokemon, fetchPokemonTypes } from '../services/getPokemon.js';
+import {
+  fetchInitialPokemon,
+  fetchPokemonTypes,
+  fetchPokemonByType,
+} from '../services/getPokemon.js';
 
 // create custom hook to return initial pokemon names, types
 export function usePokemon() {
@@ -28,5 +32,11 @@ export function usePokemon() {
     fetchData();
   }, []);
 
-  return { pokemon, types };
+  // handle change of type in select dropdown
+  const handleSelectChange = async (type) => {
+    const data = await fetchPokemonByType(type);
+    setPokemon(data);
+  };
+
+  return { pokemon, types, handleSelectChange };
 }

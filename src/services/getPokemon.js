@@ -11,3 +11,10 @@ export async function fetchPokemonTypes() {
   const data = await resp.json();
   return data;
 }
+
+// fetch pokemon by type
+export async function fetchPokemonByType(type) {
+  const resp = await fetch(`https://alchemy-pokedex.herokuapp.com/api/pokedex/?type=${type}`);
+  const data = await resp.json();
+  return data.results;
+}
