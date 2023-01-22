@@ -1,0 +1,10 @@
+select {
+  display: flex;
+  align-items: flex-start;
+  align-content: center;
+  width: 200px;
+  font-size: 1.75rem;
+  padding: 10px;
+  margin: 0px 0px 20px 10px;
+  border: 2px solid black;
+}
