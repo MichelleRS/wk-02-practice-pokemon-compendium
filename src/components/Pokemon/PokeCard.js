@@ -1,3 +1,5 @@
+import './PokeCard.css';
+
 export default function PokeCard({ poke: { _id, url_image, pokemon, type_1, type_2, shape } }) {
   return (
     <article className="card" key={_id}>
